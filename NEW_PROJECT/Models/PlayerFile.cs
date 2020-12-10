@@ -11,8 +11,8 @@ namespace NEW_PROJECT.Models
 
         public int Id { get; set; }
 
-        [Display(Name = "Student Name")]
-        public string StudentName { get; set; }
+        [Display(Name = "Player Name")]
+        public string PlayerName { get; set; }
 
         public string FileName { get; set; }
     }

@@ -12,23 +12,23 @@ namespace NEW_PROJECT.Pages.Players
     public class UpdateModel : PageModel
     {
         [BindProperty]
-        public Player StudentRec { get; set; }
+        public Player PlayerRec { get; set; }
 
         public IActionResult OnGet(int? id)
         {
-            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\zairu\source\repos\Week8A\DatabaseConnection1\Data\DatabaseConnection1.mdf;Integrated Security=True;Connect Timeout=30";
+            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
 
             SqlConnection conn = new SqlConnection(DbConnection);
             conn.Open();
 
 
 
-            StudentRec = new Player();
+            PlayerRec = new Player();
 
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "SELECT * FROM Student WHERE Id = @ID";
+                command.CommandText = "SELECT * FROM Player WHERE Id = @ID";
 
                 command.Parameters.AddWithValue("@ID", id);
                 Console.WriteLine("The id : " + id);
@@ -37,11 +37,11 @@ namespace NEW_PROJECT.Pages.Players
 
                 while (reader.Read())
                 {
-                    StudentRec.Id = reader.GetInt32(0);
-                    StudentRec.StudentID = reader.GetString(1);
-                    StudentRec.StudentName = reader.GetString(2);
-                    StudentRec.StudentLevel = reader.GetInt32(3);
-                    StudentRec.StudentCourse = reader.GetString(4);
+                    PlayerRec.Id = reader.GetInt32(0);
+                    PlayerRec.PlayerID = reader.GetString(1);
+                    PlayerRec.PlayerName = reader.GetString(2);
+                    PlayerRec.PlayerLevel = reader.GetInt32(3);
+                    PlayerRec.PlayerCourse = reader.GetString(4);
                 }
 
 
@@ -61,22 +61,22 @@ namespace NEW_PROJECT.Pages.Players
             SqlConnection conn = new SqlConnection(DbConnection);
             conn.Open();
 
-            Console.WriteLine("Student ID : " + StudentRec.Id);
-            Console.WriteLine("Student Student ID : " + StudentRec.StudentID);
-            Console.WriteLine("Student Name : " + StudentRec.StudentName);
-            Console.WriteLine("Student Level : " + StudentRec.StudentLevel);
-            Console.WriteLine("Student Course : " + StudentRec.StudentCourse);
+            Console.WriteLine("Player ID : " + PlayerRec.Id);
+            Console.WriteLine("Player Player ID : " + PlayerRec.PlayerID);
+            Console.WriteLine("Player Name : " + PlayerRec.PlayerName);
+            Console.WriteLine("Player Level : " + PlayerRec.PlayerLevel);
+            Console.WriteLine("Player Course : " + PlayerRec.PlayerCourse);
 
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "UPDATE Student SET StudentId = @StdID, StudentName = @StdName, StudentLevel = @StdLevel, StudentCourse = @StdCourse WHERE Id = @ID";
+                command.CommandText = "UPDATE Player SET PlayerId = @StdID, PlayerName = @StdName, PlayerLevel = @StdLevel, PlayerCourse = @StdCourse WHERE Id = @ID";
 
-                command.Parameters.AddWithValue("@ID", StudentRec.Id);
-                command.Parameters.AddWithValue("@StdID", StudentRec.StudentID);
-                command.Parameters.AddWithValue("@StdName", StudentRec.StudentName);
-                command.Parameters.AddWithValue("@StdLevel", StudentRec.StudentLevel);
-                command.Parameters.AddWithValue("@StdCourse", StudentRec.StudentCourse);
+                command.Parameters.AddWithValue("@ID", PlayerRec.Id);
+                command.Parameters.AddWithValue("@StdID", PlayerRec.PlayerID);
+                command.Parameters.AddWithValue("@StdName", PlayerRec.PlayerName);
+                command.Parameters.AddWithValue("@StdLevel", PlayerRec.PlayerLevel);
+                command.Parameters.AddWithValue("@StdCourse", PlayerRec.PlayerCourse);
 
                 command.ExecuteNonQuery();
             }

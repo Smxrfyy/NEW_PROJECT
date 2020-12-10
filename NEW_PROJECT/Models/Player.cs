@@ -10,17 +10,17 @@ namespace NEW_PROJECT.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Student ID")]
-        public string StudentID { get; set; }
+        [Display(Name = "Player ID")]
+        public string PlayerID { get; set; }
 
-        [Display(Name = "Student Name")]
-        public string StudentName { get; set; }
+        [Display(Name = "Player Name")]
+        public string PlayerName { get; set; }
 
-        [Display(Name = "Student Level")]
-        public int StudentLevel { get; set; }
+        [Display(Name = "Player Level")]
+        public int PlayerLevel { get; set; }
 
-        [Display(Name = "Student Course")]
-        public string StudentCourse { get; set; }
+        [Display(Name = "Player Course")]
+        public string PlayerCourse { get; set; }
 
 
 

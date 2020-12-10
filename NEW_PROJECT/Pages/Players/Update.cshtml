@@ -2,33 +2,33 @@
 @model NEW_PROJECT.Pages.Players.UpdateModel
 @{
 }
-<h1>:: Update Student Page</h1>
+<h1>:: Update Player Page</h1>
 
 <div class="row">
     <div class="col-md-4">
         <form method="post">
 
-            <input type="hidden" asp-for="StudentRec.Id" />
+            <input type="hidden" asp-for="PlayerRec.Id" />
 
 
             <div class="form-group">
-                <label asp-for="StudentRec.StudentID" class="control-label"></label>
-                <input type="text" asp-for="StudentRec.StudentID" class="form-control" />
+                <label asp-for="PlayerRec.PlayerID" class="control-label"></label>
+                <input type="text" asp-for="PlayerRec.PlayerID" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label asp-for="StudentRec.StudentName" class="control-label"></label>
-                <input type="text" asp-for="StudentRec.StudentName" class="form-control" />
+                <label asp-for="PlayerRec.PlayerName" class="control-label"></label>
+                <input type="text" asp-for="PlayerRec.PlayerName" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label asp-for="StudentRec.StudentLevel" class="control-label"></label>
-                <input type="text" asp-for="StudentRec.StudentLevel" class="form-control" />
+                <label asp-for="PlayerRec.PlayerLevel" class="control-label"></label>
+                <input type="text" asp-for="PlayerRec.PlayerLevel" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label asp-for="StudentRec.StudentCourse" class="control-label"></label>
-                <input type="text" asp-for="StudentRec.StudentCourse" class="form-control" />
+                <label asp-for="PlayerRec.PlayerCourse" class="control-label"></label>
+                <input type="text" asp-for="PlayerRec.PlayerCourse" class="form-control" />
             </div>
 
             <div class="form-group">

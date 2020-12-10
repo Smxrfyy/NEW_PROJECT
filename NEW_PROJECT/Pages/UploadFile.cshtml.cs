@@ -48,18 +48,18 @@ namespace NEW_PROJECT.Pages
                     StdFile.CopyTo(FStream);//copy the file into FStream variable
                 }
 
-                DBConnection DBCon = new DBConnection();
-                string DbString = DBCon.DbString();
-                SqlConnection conn = new SqlConnection(DbString);
-                conn.Open();
+            //DBConnection DBCon = new DBConnection();
+            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
+            SqlConnection conn = new SqlConnection(DbString);
+            conn.Open();
 
-                using (SqlCommand command = new SqlCommand())
+            using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = @"INSERT StudentFile (StudentName, FileName) VALUES (@StdName, @FName)";
-                    command.Parameters.AddWithValue("@StdName", StudFileRec.StudentName);
+                    command.CommandText = @"INSERT PlayerFile (PlayerName, FileName) VALUES (@StdName, @FName)";
+                    command.Parameters.AddWithValue("@StdName", StudFileRec.PlayerName);
                     command.Parameters.AddWithValue("@FName", StdFile.FileName);
-                    Console.WriteLine("File name : " + StudFileRec.StudentName);
+                    Console.WriteLine("File name : " + StudFileRec.PlayerName);
                     Console.WriteLine("File name : " + StdFile.FileName);
                     command.ExecuteNonQuery();
                 }

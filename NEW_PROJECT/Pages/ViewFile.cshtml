@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Student Name</th>
+                <th>Player Name</th>
                 <th>File Name</th>
                 <th>File</th>
                 <th>Action</th>
@@ -18,7 +18,7 @@
         @for (int i = 0; i < Model.FileRec.Count; i++)
         {
 <tr>
-    <td>@Model.FileRec[i].StudentName</td>
+    <td>@Model.FileRec[i].PlayerName</td>
     <td>@Model.FileRec[i].FileName</td>
     <td><img src="~/Files/@Model.FileRec[i].FileName" style=" max-width:80px;" /></td>
     <td><a asp-page="/DeleteFile/Delete" asp-route-id="@Model.FileRec[i].Id">Delete</a></td>

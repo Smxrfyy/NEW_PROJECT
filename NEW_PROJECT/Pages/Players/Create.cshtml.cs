@@ -12,14 +12,14 @@ namespace NEW_PROJECT.Pages.Players
     public class CreateModel : PageModel
     {
         [BindProperty]
-       public Player StudRec { get; set; }
+       public Player PlayerRec { get; set; }
         public void OnGet()
         {
         }
 
         public IActionResult OnPost()
         {
-            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\zairu\source\repos\Week8A\DatabaseConnection1\Data\DatabaseConnection1.mdf;Integrated Security=True;Connect Timeout=30";
+            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
 
             SqlConnection conn = new SqlConnection(DbConnection);
             conn.Open();
@@ -27,18 +27,18 @@ namespace NEW_PROJECT.Pages.Players
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"INSERT INTO Student (StudentID, StudentName, StudentLevel, StudentCourse) VALUES (@SID, @SName, @SLevel, @SCourse)";
+                command.CommandText = @"INSERT INTO Player (PlayerID, PlayerName, PlayerLevel, PlayerCourse) VALUES (@SID, @SName, @SLevel, @SCourse)";
 
-                command.Parameters.AddWithValue("@SID", StudRec.StudentID);
-                command.Parameters.AddWithValue("@SName", StudRec.StudentName);
-                command.Parameters.AddWithValue("@SLevel", StudRec.StudentLevel);
-                command.Parameters.AddWithValue("@SCourse", StudRec.StudentCourse);
+                command.Parameters.AddWithValue("@SID", PlayerRec.PlayerID);
+                command.Parameters.AddWithValue("@SName", PlayerRec.PlayerName);
+                command.Parameters.AddWithValue("@SLevel", PlayerRec.PlayerLevel);
+                command.Parameters.AddWithValue("@SCourse", PlayerRec.PlayerCourse);
 
 
-                Console.WriteLine(StudRec.StudentID);
-                Console.WriteLine(StudRec.StudentName);
-                Console.WriteLine(StudRec.StudentLevel);
-                Console.WriteLine(StudRec.StudentCourse);
+                Console.WriteLine(PlayerRec.PlayerID);
+                Console.WriteLine(PlayerRec.PlayerName);
+                Console.WriteLine(PlayerRec.PlayerLevel);
+                Console.WriteLine(PlayerRec.PlayerCourse);
 
 
 

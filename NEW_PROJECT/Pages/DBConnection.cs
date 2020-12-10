@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NEW_PROJECT.Pages.DatabaseConnection
+namespace NEW_PROJECT.Pages
 {
     public class DatabaseConnect
     {

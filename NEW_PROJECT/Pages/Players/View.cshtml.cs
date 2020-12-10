@@ -11,7 +11,7 @@ namespace NEW_PROJECT.Pages.Players
 {
     public class ViewModel : PageModel
     {
-        public List<Player> StudentRec { get; set; }
+        public List<Player> PlayerRec { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; }
@@ -21,7 +21,7 @@ namespace NEW_PROJECT.Pages.Players
         public void OnGet()
         {
 
-            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\zairu\source\repos\Week8A\DatabaseConnection1\Data\DatabaseConnection1.mdf;Integrated Security=True;Connect Timeout=30";
+            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
 
             SqlConnection conn = new SqlConnection(DbConnection);
             conn.Open();
@@ -29,28 +29,28 @@ namespace NEW_PROJECT.Pages.Players
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT * FROM Student";
+                command.CommandText = @"SELECT * FROM Player";
 
                 if (!string.IsNullOrEmpty(Level) && (Level != "All"))
                 {
-                    command.CommandText += " WHERE StudentLevel = @StdLevel";
+                    command.CommandText += " WHERE PlayerLevel = @StdLevel";
                     command.Parameters.AddWithValue("@StdLevel", Convert.ToInt32(Level));
                 }
 
                 SqlDataReader reader = command.ExecuteReader(); //SqlDataReader is used to read record from a table
 
-                StudentRec = new List<Player>(); //this object of list is created to populate all records from the table
+                PlayerRec = new List<Player>(); //this object of list is created to populate all records from the table
 
                 while (reader.Read())
                 {
                     Player record = new Player(); //a local var to hold a record temporarily
                     record.Id = reader.GetInt32(0); //getting the first field from the table
-                    record.StudentID = reader.GetString(1); //getting the second field from the table
-                    record.StudentName = reader.GetString(2); //getting the third field from the table
-                    record.StudentLevel = reader.GetInt32(3);
-                    record.StudentCourse = reader.GetString(4);
+                    record.PlayerID = reader.GetString(1); //getting the second field from the table
+                    record.PlayerName = reader.GetString(2); //getting the third field from the table
+                    record.PlayerLevel = reader.GetInt32(3);
+                    record.PlayerCourse = reader.GetString(4);
 
-                    StudentRec.Add(record); //adding the single record into the list
+                    PlayerRec.Add(record); //adding the single record into the list
                 }
 
                 // Call Close when done reading.

@@ -2,41 +2,41 @@
 @model NEW_PROJECT.Pages.Players.DeleteModel
 @{
 }
-<h1>:: Delete Student Page ::</h1>
+<h1>:: Delete Player Page ::</h1>
 
 <h2 class="text-danger">Are you sure want to delete the record?</h2>
 
 <div class="table-active">
 
     <div>
-        <label asp-for="StudentRec.StudentID"></label>
+        <label asp-for="PlayerRec.PlayerID"></label>
         <span> : </span>
-        @Model.StudentRec.StudentID <!--razor code where you access the model from cshtml.cs file-->
+        @Model.PlayerRec.PlayerID <!--razor code where you access the model from cshtml.cs file-->
     </div>
 
     <div>
-        <label asp-for="StudentRec.StudentName"></label>
+        <label asp-for="PlayerRec.PlayerName"></label>
         <span> : </span>
-        @Model.StudentRec.StudentName
+        @Model.PlayerRec.PlayerName
     </div>
 
     <div>
-        <label asp-for="StudentRec.StudentLevel"></label>
+        <label asp-for="PlayerRec.PlayerLevel"></label>
         <span> : </span>
-        @Model.StudentRec.StudentLevel
+        @Model.PlayerRec.PlayerLevel
     </div>
 
     <div>
-        <label asp-for="StudentRec.StudentCourse"></label>
+        <label asp-for="PlayerRec.PlayerCourse"></label>
         <span> : </span>
-        @Model.StudentRec.StudentCourse
+        @Model.PlayerRec.PlayerCourse
     </div>
 
 </div>
 <br />
 <div>
     <form method="post">
-        <input type="hidden" asp-for="StudentRec.Id" />
+        <input type="hidden" asp-for="PlayerRec.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" />
     </form>
 </div>

@@ -29,15 +29,15 @@ namespace NEW_PROJECT.Pages.DeleteFile
 
         public IActionResult OnGet(int? Id)//we receive this Id from View.cs
         {
-            DBConnection DBCon = new DBConnection();
-            string DbString = DBCon.DbString();
+            //DBConnection DBCon = new DBConnection();
+            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
             SqlConnection conn = new SqlConnection(DbString);
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT * FROM StudentFile WHERE Id = @Id";
+                command.CommandText = @"SELECT * FROM PlayerFile WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", Id);
 
                 var reader = command.ExecuteReader();
@@ -46,7 +46,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
                 while (reader.Read())
                 {
                     StdFileRec.Id = reader.GetInt32(0);
-                    StdFileRec.StudentName = reader.GetString(1); //to display on the html page
+                    StdFileRec.PlayerName = reader.GetString(1); //to display on the html page
                     StdFileRec.FileName = reader.GetString(2); //to display on the html page
                 }
 
@@ -73,15 +73,15 @@ namespace NEW_PROJECT.Pages.DeleteFile
             Console.WriteLine("Record Id : " + Id);
             Console.WriteLine("File Name : " + FileName);
 
-            DBConnection DBCon = new DBConnection();
-            string DbString = DBCon.DbString();
+            //DBConnection DBCon = new DBConnection();
+            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
             SqlConnection conn = new SqlConnection(DbString);
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"DELETE FROM StudentFile WHERE Id = @Id";
+                command.CommandText = @"DELETE FROM PlayerFile WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", Id);
 
                 command.ExecuteNonQuery();

@@ -2,7 +2,7 @@
 @model NEW_PROJECT.Pages.Players.ViewModel
 @{
 }
-<h1>:: View Student Page ::</h1>
+<h1>:: View Player Page ::</h1>
 <br />
 <br />
 
@@ -27,16 +27,16 @@
             <tr>
 
                 <th>
-                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentID)
+                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerID)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentName)
+                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentLevel)
+                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerLevel)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentCourse)
+                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerCourse)
                 </th>
                 <th>
                     Actions
@@ -45,16 +45,16 @@
         </thead>
 
 
-        @for (int i = 0; i < Model.StudentRec.Count; i++)
+        @for (int i = 0; i < Model.PlayerRec.Count; i++)
         {
 <tr>
-    <td>@Model.StudentRec[i].StudentID</td>
-    <td>@Model.StudentRec[i].StudentName</td>
-    <td>@Model.StudentRec[i].StudentLevel</td>
-    <td>@Model.StudentRec[i].StudentCourse</td>
+    <td>@Model.PlayerRec[i].PlayerID</td>
+    <td>@Model.PlayerRec[i].PlayerName</td>
+    <td>@Model.PlayerRec[i].PlayerLevel</td>
+    <td>@Model.PlayerRec[i].PlayerCourse</td>
     <td>
-        <a asp-page="/Students/Update" asp-route-id="@Model.StudentRec[i].Id">Update</a>
-        <a asp-page="/Students/Delete" asp-route-id="@Model.StudentRec[i].Id">Delete</a>
+        <a asp-page="/Players/Update" asp-route-id="@Model.PlayerRec[i].Id">Update</a>
+        <a asp-page="/Players/Delete" asp-route-id="@Model.PlayerRec[i].Id">Delete</a>
     </td>
 </tr>}
     </table>
