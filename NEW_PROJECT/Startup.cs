@@ -24,6 +24,18 @@ namespace NEW_PROJECT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddSession(o =>
+            {
+                o.IdleTimeout = TimeSpan.FromSeconds(240);
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
