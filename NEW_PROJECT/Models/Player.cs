@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace NEW_PROJECT.Models
 {
-    public class Student
+    public class Player
     {
         public int Id { get; set; }
 

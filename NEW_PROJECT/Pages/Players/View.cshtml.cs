@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NEW_PROJECT.Models;
 
 namespace NEW_PROJECT.Pages.Players
 {
     public class ViewModel : PageModel
     {
-        public List<Student> StudentRec { get; set; }
+        public List<Player> StudentRec { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string Level { get; set; }
@@ -37,11 +39,11 @@ namespace NEW_PROJECT.Pages.Players
 
                 SqlDataReader reader = command.ExecuteReader(); //SqlDataReader is used to read record from a table
 
-                StudentRec = new List<Student>(); //this object of list is created to populate all records from the table
+                StudentRec = new List<Player>(); //this object of list is created to populate all records from the table
 
                 while (reader.Read())
                 {
-                    Student record = new Student(); //a local var to hold a record temporarily
+                    Player record = new Player(); //a local var to hold a record temporarily
                     record.Id = reader.GetInt32(0); //getting the first field from the table
                     record.StudentID = reader.GetString(1); //getting the second field from the table
                     record.StudentName = reader.GetString(2); //getting the third field from the table

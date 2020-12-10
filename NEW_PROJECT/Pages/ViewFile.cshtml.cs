@@ -1,15 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NEW_PROJECT.Models;
+using NEW_PROJECT.Pages.DeleteFile;
 
 namespace NEW_PROJECT.Pages
 {
     public class ViewModel : PageModel
     {
-        public List<StudentFile> FileRec { get; set; }
+        public List<PlayerFile> FileRec { get; set; }
         public void OnGet()
         {
             DBConnection DBCon = new DBConnection();
@@ -24,11 +27,11 @@ namespace NEW_PROJECT.Pages
 
                 var reader = command.ExecuteReader();
 
-                FileRec = new List<StudentFile>();
+                FileRec = new List<PlayerFile>();
 
                 while (reader.Read())
                 {
-                    StudentFile rec = new StudentFile();
+                    PlayerFile rec = new PlayerFile();
                     rec.Id = reader.GetInt32(0); // we need this to send the Id to Delete page for another enquiry
                     rec.StudentName = reader.GetString(1);
                     rec.FileName = reader.GetString(2);

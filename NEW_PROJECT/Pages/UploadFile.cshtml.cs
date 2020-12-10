@@ -1,21 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NEW_PROJECT.Models;
+using NEW_PROJECT.Pages.DeleteFile;
 
 namespace NEW_PROJECT.Pages
 {
-    public class UploadFileModel : PageModel
-    {
+    
         public class UploadFileModel : PageModel
         {
             [BindProperty(SupportsGet = true)]
             public IFormFile StdFile { get; set; }
 
             [BindProperty(SupportsGet = true)]
-            public StudentFile StudFileRec { get; set; }
+            public PlayerFile StudFileRec { get; set; }
 
             public readonly IWebHostEnvironment _env;
 
@@ -65,4 +70,3 @@ namespace NEW_PROJECT.Pages
             }
         }
     }
-}

@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NEW_PROJECT.Models;
 
 namespace NEW_PROJECT.Pages.Players
 {
     public class CreateModel : PageModel
     {
         [BindProperty]
-        public Student StudRec { get; set; }
+       public Player StudRec { get; set; }
         public void OnGet()
         {
         }

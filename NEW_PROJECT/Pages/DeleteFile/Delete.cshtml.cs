@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NEW_PROJECT.Models;
 
 namespace NEW_PROJECT.Pages.DeleteFile
 {
@@ -13,7 +17,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
 
 
         [BindProperty]
-        public StudentFile StdFileRec { get; set; }
+        public PlayerFile StdFileRec { get; set; }
 
         public readonly IWebHostEnvironment _env;
 
@@ -38,7 +42,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
 
                 var reader = command.ExecuteReader();
 
-                StdFileRec = new StudentFile();
+                StdFileRec = new PlayerFile();
                 while (reader.Read())
                 {
                     StdFileRec.Id = reader.GetInt32(0);

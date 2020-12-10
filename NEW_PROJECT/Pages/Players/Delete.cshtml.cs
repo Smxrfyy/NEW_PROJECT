@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NEW_PROJECT.Models;
 
 namespace NEW_PROJECT.Pages.Players
 {
     public class DeleteModel : PageModel
     {
         [BindProperty]
-        public Student StudentRec { get; set; }
+        public Player StudentRec { get; set; }
         public IActionResult OnGet(int? id)
         {
 
@@ -26,7 +28,7 @@ namespace NEW_PROJECT.Pages.Players
                 command.Parameters.AddWithValue("@ID", id);
 
                 SqlDataReader reader = command.ExecuteReader();
-                StudentRec = new Student();
+                StudentRec = new Player();
                 while (reader.Read())
                 {
                     StudentRec.Id = reader.GetInt32(0);
