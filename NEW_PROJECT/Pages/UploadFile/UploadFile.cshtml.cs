@@ -17,10 +17,10 @@ namespace NEW_PROJECT.Pages
         public class UploadFileModel : PageModel
         {
             [BindProperty(SupportsGet = true)]
-            public IFormFile StdFile { get; set; }
+            public IFormFile PlayerFile { get; set; }
 
             [BindProperty(SupportsGet = true)]
-            public PlayerFile StudFileRec { get; set; }
+            public PlayerFile PlayerFileRec { get; set; }
 
             public readonly IWebHostEnvironment _env;
 
@@ -38,14 +38,14 @@ namespace NEW_PROJECT.Pages
             public IActionResult OnPost()
             {
 
-                var FileToUpload = Path.Combine(_env.WebRootPath, "Files", StdFile.FileName);//this variable consists of file path
+                var FileToUpload = Path.Combine(_env.WebRootPath, "Files", PlayerFile.FileName);//this variable consists of file path
                 Console.WriteLine("File Name : " + FileToUpload);
 
 
 
                 using (var FStream = new FileStream(FileToUpload, FileMode.Create))
                 {
-                    StdFile.CopyTo(FStream);//copy the file into FStream variable
+                    PlayerFile.CopyTo(FStream);//copy the file into FStream variable
                 }
 
             //DBConnection DBCon = new DBConnection();
@@ -56,11 +56,11 @@ namespace NEW_PROJECT.Pages
             using (SqlCommand command = new SqlCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = @"INSERT PlayerFile (PlayerName, FileName) VALUES (@StdName, @FName)";
-                    command.Parameters.AddWithValue("@StdName", StudFileRec.PlayerName);
-                    command.Parameters.AddWithValue("@FName", StdFile.FileName);
-                    Console.WriteLine("File name : " + StudFileRec.PlayerName);
-                    Console.WriteLine("File name : " + StdFile.FileName);
+                    command.CommandText = @"INSERT FileTable (PlayerName, FileName) VALUES (@PlayerName, @FName)";
+                    command.Parameters.AddWithValue("@PlayerName", PlayerFileRec.PlayerName);
+                    command.Parameters.AddWithValue("@FName", PlayerFile.FileName);
+                    Console.WriteLine("File name : " + PlayerFileRec.PlayerName);
+                    Console.WriteLine("File name : " + PlayerFile.FileName);
                     command.ExecuteNonQuery();
                 }
 

@@ -37,7 +37,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT * FROM PlayerFile WHERE Id = @Id";
+                command.CommandText = @"SELECT * FROM FileTable WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", Id);
 
                 var reader = command.ExecuteReader();
@@ -63,7 +63,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
         {
 
             deletePicture(StdFileRec.Id, StdFileRec.FileName);
-            return RedirectToPage("/ViewFile/View");
+            return RedirectToPage("/ViewFile/ViewFile");
         }
 
 
@@ -81,7 +81,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"DELETE FROM PlayerFile WHERE Id = @Id";
+                command.CommandText = @"DELETE FROM FileTable WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", Id);
 
                 command.ExecuteNonQuery();

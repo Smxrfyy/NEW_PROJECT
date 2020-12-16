@@ -23,7 +23,7 @@ namespace NEW_PROJECT.Pages
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT * FROM PlayerFile";
+                command.CommandText = @"SELECT * FROM FileTable";
 
                 var reader = command.ExecuteReader();
 

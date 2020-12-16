@@ -11,13 +11,13 @@
 
         <div>
             <label>Select an image file to upload</label>
-            <input type="file" asp-for="StdFile" onchange="readURL(this)" accept="image/*" />
+            <input type="file" asp-for="PlayerFile" onchange="readURL(this)" accept="image/*" />
         </div>
         <br />
 
         <div>
-            <label>@Html.DisplayNameFor(model => model.StudFileRec.PlayerName)</label>
-            <input type="text" asp-for="StudFileRec.PlayerName" class="form-control" />
+            <label>@Html.DisplayNameFor(model => model.PlayerFileRec.PlayerName)</label>
+            <input type="text" asp-for="PlayerFileRec.PlayerName" class="form-control" />
         </div>
         <br />
         <div>
