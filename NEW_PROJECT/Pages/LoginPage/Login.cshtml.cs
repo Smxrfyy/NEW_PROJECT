@@ -16,6 +16,7 @@ namespace NEW_PROJECT.Pages.LoginPage
         [BindProperty]
         public User User { get; set; }
         public string Message { get; set; }
+        public string DbString { get; private set; }
 
         public string SessionID;
 
@@ -32,7 +33,7 @@ namespace NEW_PROJECT.Pages.LoginPage
             }
 
 
-            // DatabaseConnect dbstring = new DatabaseConnect(); //creating an object from the class
+            DatabaseConnect Dbstring = new DatabaseConnect(); //creating an object from the class
             string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
             SqlConnection conn = new SqlConnection(DbString);
             conn.Open();
@@ -44,7 +45,7 @@ namespace NEW_PROJECT.Pages.LoginPage
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT FirstName, UserName, UserRole FROM UserTable WHERE UserName = @UName AND UserPassword = @Pwd";
+                command.CommandText = @"SELECT FirstName, UserName, Role FROM UserTable WHERE UserName = @UName AND Password = @Pwd";
 
                 command.Parameters.AddWithValue("@UName", User.UserName);
                 command.Parameters.AddWithValue("@Pwd", User.Password);

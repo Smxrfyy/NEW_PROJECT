@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Session;
+
 
 namespace NEW_PROJECT
 {
@@ -30,6 +32,7 @@ namespace NEW_PROJECT
                 o.IdleTimeout = TimeSpan.FromSeconds(240);
                 o.Cookie.HttpOnly = true;
                 o.Cookie.IsEssential = true;
+
             });
 
 
@@ -44,6 +47,8 @@ namespace NEW_PROJECT
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSession();
+
             }
             else
             {

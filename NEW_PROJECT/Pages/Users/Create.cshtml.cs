@@ -59,7 +59,7 @@ namespace NEW_PROJECT.Pages.Users
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"INSERT INTO UserTable (FirstName, UserName, UserPassword, UserRole) VALUES (@FName, @UName, @Pwd, @Role)";
+                command.CommandText = @"INSERT INTO UserTable (FirstName, UserName, Password, Role) VALUES (@FName, @UName, @Pwd, @Role)";
 
                 command.Parameters.AddWithValue("@FName", User.FirstName);
                 command.Parameters.AddWithValue("@UName", User.UserName);
