@@ -29,12 +29,12 @@ namespace NEW_PROJECT.Pages.Players
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT * FROM Player";
+                command.CommandText = @"SELECT * FROM PlayerTable";
 
                 if (!string.IsNullOrEmpty(Level) && (Level != "All"))
                 {
-                    command.CommandText += " WHERE PlayerLevel = @StdLevel";
-                    command.Parameters.AddWithValue("@StdLevel", Convert.ToInt32(Level));
+                    command.CommandText += " WHERE PlayerLevel = @PlayerLevel";
+                    command.Parameters.AddWithValue("@PlayerLevel", Convert.ToInt32(Level));
                 }
 
                 SqlDataReader reader = command.ExecuteReader(); //SqlDataReader is used to read record from a table
@@ -46,9 +46,9 @@ namespace NEW_PROJECT.Pages.Players
                     Player record = new Player(); //a local var to hold a record temporarily
                     record.Id = reader.GetInt32(0); //getting the first field from the table
                     record.PlayerID = reader.GetString(1); //getting the second field from the table
-                    record.PlayerName = reader.GetString(2); //getting the third field from the table
-                    record.PlayerLevel = reader.GetInt32(3);
-                    record.PlayerCourse = reader.GetString(4);
+                    record.PlayerFirstName = reader.GetString(2); //getting the third field from the table
+                    record.PlayerSurname = reader.GetString(3);
+                    record.PlayerAge = reader.GetInt32(4);
 
                     PlayerRec.Add(record); //adding the single record into the list
                 }

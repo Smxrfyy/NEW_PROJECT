@@ -28,7 +28,7 @@ namespace NEW_PROJECT.Pages.Players
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "SELECT * FROM Player WHERE Id = @ID";
+                command.CommandText = "SELECT * FROM PlayerTable WHERE Id = @ID";
 
                 command.Parameters.AddWithValue("@ID", id);
                 Console.WriteLine("The id : " + id);
@@ -39,9 +39,9 @@ namespace NEW_PROJECT.Pages.Players
                 {
                     PlayerRec.Id = reader.GetInt32(0);
                     PlayerRec.PlayerID = reader.GetString(1);
-                    PlayerRec.PlayerName = reader.GetString(2);
-                    PlayerRec.PlayerLevel = reader.GetInt32(3);
-                    PlayerRec.PlayerCourse = reader.GetString(4);
+                    PlayerRec.PlayerFirstName = reader.GetString(2);
+                    PlayerRec.PlayerSurname = reader.GetString(3);
+                    PlayerRec.PlayerAge = reader.GetInt32(4);
                 }
 
 
@@ -56,27 +56,27 @@ namespace NEW_PROJECT.Pages.Players
 
         public IActionResult OnPost()
         {
-            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\zairu\source\repos\Week8A\DatabaseConnection1\Data\DatabaseConnection1.mdf;Integrated Security=True;Connect Timeout=30";
+            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
 
             SqlConnection conn = new SqlConnection(DbConnection);
             conn.Open();
 
             Console.WriteLine("Player ID : " + PlayerRec.Id);
             Console.WriteLine("Player Player ID : " + PlayerRec.PlayerID);
-            Console.WriteLine("Player Name : " + PlayerRec.PlayerName);
-            Console.WriteLine("Player Level : " + PlayerRec.PlayerLevel);
-            Console.WriteLine("Player Course : " + PlayerRec.PlayerCourse);
+            Console.WriteLine("Player Name : " + PlayerRec.PlayerFirstName);
+            Console.WriteLine("Player Age : " + PlayerRec.PlayerSurname);
+            Console.WriteLine("Player Ability : " + PlayerRec.PlayerAge);
 
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "UPDATE Player SET PlayerId = @StdID, PlayerName = @StdName, PlayerLevel = @StdLevel, PlayerCourse = @StdCourse WHERE Id = @ID";
+                command.CommandText = "UPDATE PlayerTable SET PlayerId = @PID, PlayerFirstName = @PFName, PlayerSurname = @PSur, PlayerAge = @PAge WHERE Id = @ID";
 
                 command.Parameters.AddWithValue("@ID", PlayerRec.Id);
-                command.Parameters.AddWithValue("@StdID", PlayerRec.PlayerID);
-                command.Parameters.AddWithValue("@StdName", PlayerRec.PlayerName);
-                command.Parameters.AddWithValue("@StdLevel", PlayerRec.PlayerLevel);
-                command.Parameters.AddWithValue("@StdCourse", PlayerRec.PlayerCourse);
+                command.Parameters.AddWithValue("@PID", PlayerRec.PlayerID);
+                command.Parameters.AddWithValue("@PFName", PlayerRec.PlayerFirstName);
+                command.Parameters.AddWithValue("@PSur", PlayerRec.PlayerSurname);
+                command.Parameters.AddWithValue("@PAge", PlayerRec.PlayerAge);
 
                 command.ExecuteNonQuery();
             }

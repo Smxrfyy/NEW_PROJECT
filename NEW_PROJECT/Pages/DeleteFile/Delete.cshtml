@@ -9,17 +9,17 @@
 <dl class="row">
 
     <dt class="col-sm-2">
-        <img id="displayImg" src="~/Files/@Model.StdFileRec.FileName" alt="User Picture" style=" max-width:180px;" /><br>
+        <img id="displayImg" src="~/Files/@Model.PlayerFileRec.FileName" alt="User Picture" style=" max-width:180px;" /><br>
 
-        Player Name : @Model.StdFileRec.PlayerName
+        Player Name : @Model.PlayerFileRec.PlayerName
 
     </dt>
 </dl>
 
 <div>
     <form method="post">
-        <input type="hidden" asp-for="StdFileRec.Id" /> <!--We need this as the hidden input for OnPost-->
-        <input type="hidden" asp-for="StdFileRec.FileName" /> <!--We need this as the hidden input for OnPost-->
+        <input type="hidden" asp-for="PlayerFileRec.Id" /> <!--We need this as the hidden input for OnPost-->
+        <input type="hidden" asp-for="PlayerFileRec.FileName" /> <!--We need this as the hidden input for OnPost-->
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="/ViewFile/ViewFile">Back to List</a>
     </form>

@@ -24,7 +24,7 @@ namespace NEW_PROJECT.Pages.Players
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "SELECT * FROM Player WHERE Id = @ID";
+                command.CommandText = "SELECT * FROM PlayerTable WHERE Id = @ID";
                 command.Parameters.AddWithValue("@ID", id);
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -33,9 +33,9 @@ namespace NEW_PROJECT.Pages.Players
                 {
                     PlayerRec.Id = reader.GetInt32(0);
                     PlayerRec.PlayerID = reader.GetString(1);
-                    PlayerRec.PlayerName = reader.GetString(2);
-                    PlayerRec.PlayerLevel = reader.GetInt32(3);
-                    PlayerRec.PlayerCourse = reader.GetString(4);
+                    PlayerRec.PlayerFirstName = reader.GetString(2);
+                    PlayerRec.PlayerSurname = reader.GetString(3);
+                    PlayerRec.PlayerAge = reader.GetInt32(4);
                 }
 
             }
@@ -56,7 +56,7 @@ namespace NEW_PROJECT.Pages.Players
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "DELETE Player WHERE Id = @ID";
+                command.CommandText = "DELETE PlayerTable WHERE Id = @ID";
                 command.Parameters.AddWithValue("@ID", PlayerRec.Id);
                 command.ExecuteNonQuery();
             }

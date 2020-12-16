@@ -13,16 +13,14 @@ namespace NEW_PROJECT.Models
         [Display(Name = "Player ID")]
         public string PlayerID { get; set; }
 
-        [Display(Name = "Player Name")]
-        public string PlayerName { get; set; }
+        [Display(Name = "Player First Name")]
+        public string PlayerFirstName { get; set; }
 
-        [Display(Name = "Player Level")]
-        public int PlayerLevel { get; set; }
+        [Display(Name = "Player Surname")]
+        public string PlayerSurname { get; set; }
 
-        [Display(Name = "Player Course")]
-        public string PlayerCourse { get; set; }
-
-
-
+        [Display(Name = "Player Age")]
+        public int PlayerAge { get; set; }
+    
     }
 }

@@ -30,13 +30,13 @@
                     @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerID)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerName)
+                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerFirstName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerLevel)
+                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerSurname)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerCourse)
+                    @Html.DisplayNameFor(model => model.PlayerRec[0].PlayerAge)
                 </th>
                 <th>
                     Actions
@@ -49,9 +49,9 @@
         {
 <tr>
     <td>@Model.PlayerRec[i].PlayerID</td>
-    <td>@Model.PlayerRec[i].PlayerName</td>
-    <td>@Model.PlayerRec[i].PlayerLevel</td>
-    <td>@Model.PlayerRec[i].PlayerCourse</td>
+    <td>@Model.PlayerRec[i].PlayerFirstName</td>
+    <td>@Model.PlayerRec[i].PlayerSurname</td>
+    <td>@Model.PlayerRec[i].PlayerAge</td>
     <td>
         <a asp-page="/Players/Update" asp-route-id="@Model.PlayerRec[i].Id">Update</a>
         <a asp-page="/Players/Delete" asp-route-id="@Model.PlayerRec[i].Id">Delete</a>

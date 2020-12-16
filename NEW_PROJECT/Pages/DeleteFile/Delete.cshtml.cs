@@ -17,7 +17,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
 
 
         [BindProperty]
-        public PlayerFile StdFileRec { get; set; }
+        public PlayerFile PlayerFileRec { get; set; }
 
         public readonly IWebHostEnvironment _env;
 
@@ -42,15 +42,15 @@ namespace NEW_PROJECT.Pages.DeleteFile
 
                 var reader = command.ExecuteReader();
 
-                StdFileRec = new PlayerFile();
+                PlayerFileRec = new PlayerFile();
                 while (reader.Read())
                 {
-                    StdFileRec.Id = reader.GetInt32(0);
-                    StdFileRec.PlayerName = reader.GetString(1); //to display on the html page
-                    StdFileRec.FileName = reader.GetString(2); //to display on the html page
+                    PlayerFileRec.Id = reader.GetInt32(0);
+                    PlayerFileRec.PlayerName = reader.GetString(1); //to display on the html page
+                    PlayerFileRec.FileName = reader.GetString(2); //to display on the html page
                 }
 
-                Console.WriteLine("File name : " + StdFileRec.FileName);
+                Console.WriteLine("File name : " + PlayerFileRec.FileName);
 
 
             }
@@ -62,7 +62,7 @@ namespace NEW_PROJECT.Pages.DeleteFile
         public IActionResult OnPost()
         {
 
-            deletePicture(StdFileRec.Id, StdFileRec.FileName);
+            deletePicture(PlayerFileRec.Id, PlayerFileRec.FileName);
             return RedirectToPage("/ViewFile/ViewFile");
         }
 

@@ -27,18 +27,18 @@ namespace NEW_PROJECT.Pages.Players
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"INSERT INTO Player (PlayerID, PlayerName, PlayerLevel, PlayerCourse) VALUES (@SID, @SName, @SLevel, @SCourse)";
+                command.CommandText = @"INSERT INTO PlayerTable (PlayerID, PlayerFirstName, PlayerSurname, PlayerAge) VALUES (@PID, @FName, @SName, @PAge)";
 
-                command.Parameters.AddWithValue("@SID", PlayerRec.PlayerID);
-                command.Parameters.AddWithValue("@SName", PlayerRec.PlayerName);
-                command.Parameters.AddWithValue("@SLevel", PlayerRec.PlayerLevel);
-                command.Parameters.AddWithValue("@SCourse", PlayerRec.PlayerCourse);
+                command.Parameters.AddWithValue("@PID", PlayerRec.PlayerID);
+                command.Parameters.AddWithValue("@FName", PlayerRec.PlayerFirstName);
+                command.Parameters.AddWithValue("@SName", PlayerRec.PlayerSurname);
+                command.Parameters.AddWithValue("@PAge", PlayerRec.PlayerAge);
 
 
                 Console.WriteLine(PlayerRec.PlayerID);
-                Console.WriteLine(PlayerRec.PlayerName);
-                Console.WriteLine(PlayerRec.PlayerLevel);
-                Console.WriteLine(PlayerRec.PlayerCourse);
+                Console.WriteLine(PlayerRec.PlayerFirstName);
+                Console.WriteLine(PlayerRec.PlayerSurname);
+                Console.WriteLine(PlayerRec.PlayerAge);
 
 
 
