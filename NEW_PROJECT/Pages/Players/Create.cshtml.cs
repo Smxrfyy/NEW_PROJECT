@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NEW_PROJECT.Models;
+using NEW_PROJECT.Pages.DatabaseConnection;
 
 namespace NEW_PROJECT.Pages.Players
 {
@@ -19,9 +20,8 @@ namespace NEW_PROJECT.Pages.Players
 
         public IActionResult OnPost()
         {
-            string DbConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
-
-            SqlConnection conn = new SqlConnection(DbConnection);
+            DatabaseConnect DbCon = new DatabaseConnect();
+            SqlConnection conn = new SqlConnection(DbCon.DatabaseString());
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())

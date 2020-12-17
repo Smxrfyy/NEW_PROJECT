@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NEW_PROJECT.Models;
+using NEW_PROJECT.Pages.DatabaseConnection;
 using NEW_PROJECT.Pages.DeleteFile;
 
 namespace NEW_PROJECT.Pages
@@ -48,9 +49,8 @@ namespace NEW_PROJECT.Pages
                     PlayerFile.CopyTo(FStream);//copy the file into FStream variable
                 }
 
-            //DBConnection DBCon = new DBConnection();
-            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(DbString);
+            DatabaseConnect DbCon = new DatabaseConnect();
+            SqlConnection conn = new SqlConnection(DbCon.DatabaseString());
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())

@@ -34,9 +34,8 @@ namespace NEW_PROJECT.Pages.AdminPages
             SessionID = HttpContext.Session.GetString(SessionKeyName3);
 
 
-            //DBConnection DBCon = new DBConnection();
-            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(DbString);
+            DatabaseConnect DBCon = new DatabaseConnect();
+            SqlConnection conn = new SqlConnection(DBCon.DatabaseString());
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())

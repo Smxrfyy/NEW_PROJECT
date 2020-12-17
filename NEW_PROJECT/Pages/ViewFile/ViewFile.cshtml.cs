@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NEW_PROJECT.Models;
+using NEW_PROJECT.Pages.DatabaseConnection;
 using NEW_PROJECT.Pages.DeleteFile;
 
 namespace NEW_PROJECT.Pages
@@ -15,9 +16,8 @@ namespace NEW_PROJECT.Pages
         public List<PlayerFile> FileRec { get; set; }
         public void OnGet()
         {
-            //DBConnection DBCon = new DBConnection();
-            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(DbString);
+            DatabaseConnect DBCon = new DatabaseConnect();
+            SqlConnection conn = new SqlConnection(DBCon.DatabaseString());
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())

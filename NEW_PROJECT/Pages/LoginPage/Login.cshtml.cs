@@ -16,7 +16,6 @@ namespace NEW_PROJECT.Pages.LoginPage
         [BindProperty]
         public User User { get; set; }
         public string Message { get; set; }
-        public string DbString { get; private set; }
 
         public string SessionID;
 
@@ -34,8 +33,7 @@ namespace NEW_PROJECT.Pages.LoginPage
 
 
             DatabaseConnect Dbstring = new DatabaseConnect(); //creating an object from the class
-            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(DbString);
+            SqlConnection conn = new SqlConnection(Dbstring.DatabaseString());
             conn.Open();
 
             Console.WriteLine(User.UserName);
@@ -68,6 +66,7 @@ namespace NEW_PROJECT.Pages.LoginPage
                 HttpContext.Session.SetString("sessionID", SessionID);
                 HttpContext.Session.SetString("username", User.UserName);
                 HttpContext.Session.SetString("fname", User.FirstName);
+                HttpContext.Session.SetString("role", User.Role);
 
                 if (User.Role == "User")
                 {

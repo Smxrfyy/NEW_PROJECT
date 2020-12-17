@@ -11,6 +11,7 @@ namespace NEW_PROJECT.Pages.Logout
     {
         public void OnGet()
         {
+            HttpContext.Session.Clear();
         }
     }
 }

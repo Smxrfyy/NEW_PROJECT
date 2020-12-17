@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NEW_PROJECT.Models;
+using NEW_PROJECT.Pages.DatabaseConnection;
 
 namespace NEW_PROJECT.Pages.DeleteFile
 {
@@ -29,9 +30,8 @@ namespace NEW_PROJECT.Pages.DeleteFile
 
         public IActionResult OnGet(int? Id)//we receive this Id from View.cs
         {
-            //DBConnection DBCon = new DBConnection();
-            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(DbString);
+            DatabaseConnect DBCon = new DatabaseConnect();
+            SqlConnection conn = new SqlConnection(DBCon.DatabaseString());
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())
@@ -73,9 +73,8 @@ namespace NEW_PROJECT.Pages.DeleteFile
             Console.WriteLine("Record Id : " + Id);
             Console.WriteLine("File Name : " + FileName);
 
-            //DBConnection DBCon = new DBConnection();
-            string DbString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Steven\source\repos\NEW_PROJECT\NEW_PROJECT\Data\Players_Database.mdf;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(DbString);
+            DatabaseConnect DBCon = new DatabaseConnect();
+            SqlConnection conn = new SqlConnection(DBCon.DatabaseString());
             conn.Open();
 
             using (SqlCommand command = new SqlCommand())
